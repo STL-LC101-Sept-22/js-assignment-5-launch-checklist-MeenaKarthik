@@ -1,7 +1,6 @@
 // Write your JavaScript code here!
 
-const formSubmission = require('./scriptHelper.js');
-const validateInput = require('./scriptHelper.js');
+const scriptHelper = require('./scriptHelper.js');
 
 
 
@@ -27,16 +26,16 @@ window.addEventListener("load", function() {
    form.addEventListener("submit", function(event){
         
        console.log("clicked submit");
-       let validatedPilotEntry = validateInput(pilotNameInput.value);
-       let validatedCopilotEntry = validateInput(copilotNameInput.value);
-       let validatedFuelEntry = validateInput(fuelLevelInput.value);
-       let validatedCargoMassEntry = validateInput(cargoMassInput.value);
+       let validatedPilotEntry = scriptHelper.validateInput(pilotNameInput.value);
+       let validatedCopilotEntry = scriptHelper.validateInput(copilotNameInput.value);
+       let validatedFuelEntry = scriptHelper.validateInput(fuelLevelInput.value);
+       let validatedCargoMassEntry = scriptHelper.validateInput(cargoMassInput.value);
 
        if (validatedPilotEntry === "Empty" || validatedCopilotEntry === "Empty" ||
        validatedFuelEntry === "Empty" || validatedCargoMassEntry === "Empty"){
          event.preventDefault();
        }
-       formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
+       scriptHelper.formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
    });
 
 
