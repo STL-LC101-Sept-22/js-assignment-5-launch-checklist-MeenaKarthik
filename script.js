@@ -1,5 +1,6 @@
 // Write your JavaScript code here!
 
+
 window.addEventListener("load", function() {
 
    let form = document.querySelector("form");
@@ -10,19 +11,18 @@ window.addEventListener("load", function() {
    let faultyItems = document.getElementById("faultyItems");
     
 
-   
     let listedPlanets;
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
     let listedPlanetsResponse = myFetch();
-    listedPlanetsResponse.then(function (response) {
-        listedPlanets = response;
+    listedPlanetsResponse.then(function (result) {
+        listedPlanets = result;
         console.log(listedPlanets);
     }).then(function () {
+        console.log(listedPlanets);
         // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
         let planet = pickPlanet(listedPlanets);
         addDestinationInfo(document, planet.name, planet.diameter, planet.star, planet.distance, planet.moons, planet.image);
-        });
-
+    })
 
 
    form.addEventListener("submit", function(event){
@@ -39,15 +39,10 @@ window.addEventListener("load", function() {
         event.preventDefault();
         }
 
-        else if(validatePilot !== "Is alphabets" || 
-        validateCopilot !== "Is alphabets"){
-        alert("Provide pilot/copilot value as name");
-        event.preventDefault();
-        }
-
-        else if(validateFuel === "Is alphabets" || validateFuel === "Not a Number" || 
-        validateCargoMass === "Is alphabets" || validateCargoMass === "Not a Number"){
-        alert("Provide fuel/cargo mass value in number");
+        else if(validatePilot !== "Is alphabets" || validateCopilot !== "Is alphabets" || 
+        validateFuel === "Is alphabets" || validateFuel === "Not a Number" || 
+        validateCargoMass === "Is alphabets" || validateCargoMass === "Not a Number") {
+        alert("Make sure to enter valid information for each field!");
         event.preventDefault();
         }
 
