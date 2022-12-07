@@ -86,6 +86,7 @@ async function myFetch() {
 
 function pickPlanet(planets) {
     let index = Math.floor(Math.random()*planets.length);
+    console.log(index);
     return planets[index];
 
 }
