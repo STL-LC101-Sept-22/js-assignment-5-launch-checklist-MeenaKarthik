@@ -10,21 +10,20 @@ window.addEventListener("load", function() {
    let faultyItems = document.getElementById("faultyItems");
     
 
-
     let listedPlanets;
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
     let listedPlanetsResponse = myFetch();
-    listedPlanetsResponse.then(function (result) {
-        //listedPlanets = result;
-        //console.log(listedPlanets);
-        return result.json();
-    }).then(function (json) {
-        listedPlanets = json;
+    listedPlanetsResponse.then(function (response) {
+        listedPlanets = response.json();
         console.log(listedPlanets);
+        listedPlanets.then(function (json) {
+        let data = json;
+        console.log(data);
         // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
-    })
-
-
+        let planet = pickPlanet(data);
+        addDestinationInfo(document, planet.name, planet.diameter, planet.star, planet.distance, planet.moons, planet.imageUrl);
+        });
+    });
 
    form.addEventListener("submit", function(event){
         
